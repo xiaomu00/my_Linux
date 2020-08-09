@@ -2,9 +2,7 @@
 
 #include<iostream>
 #include<string>
-#include<string.h>
 #include<stdlib.h>
-#include<unistd.h>
 #include<sys/types.h>
 #include<sys/socket.h>
 #include<arpa/inet.h>
@@ -20,7 +18,7 @@ public:
 
 	void InitServer()
 	{
-		sockfd = socket(AF_INET, SOCK_DGRAM,0); // 创建一个socket
+		sockfd = socket(AF_INTE, SOCK_DGRAM,0); // 创建一个socket
 		if(sockfd < 0){
 		  cerr<<"socket error..."<<endl;
 		  exit(2);
@@ -36,33 +34,24 @@ public:
 
 		//绑定
 		if(bind(sockfd, (struct sockaddr*)&local, sizeof(local)) == 0){
-			cout<<"Server run on"<<ip<<" : "<<port<<"...success."<<endl;
+			cout<<"server run on "<< ip << ":"<< port<<"...success."<<endl;
 		} else {
 		  cerr<<"bind error..."<<endl;
 		  exit(3);
 		}
 	}
 
-	//循环接受信息
-	void Run()
+	void run()
 	{
-		char buf[1024];
-		struct sockaddr_in peer;
 		for(;;){
-			socklen_t len = sizeof(peer);
-			ssize_t size = recvfrom(sockfd,buf,sizeof(buf)-1,0,(struct sockaddr*)&peer,&len);
-			if(size > 0){
-				buf[size] = 0;
-				cout<<"客户端#： "<<buf<<endl;
-			}
+			
 		}
 	}
 
 
 	~Server()
 	{
-		if(sockfd >= 0)
-		  close(sockfd);
+
 	}
 
 private:
