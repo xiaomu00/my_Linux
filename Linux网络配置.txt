@@ -1,0 +1,29 @@
+1、 vim /etc/default/grub
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL_OUTPUT="console"
+GRUB_CMDLINE_LINUX="spectre_v2=retpoline rd.lvm.lv=centos/root rd.lvm.lv=centos/swap rhgb quiet biosdevname=0 net.ifnames=0"
+GRUB_DISABLE_RECOVERY="true"
+
+
+2、 grub2-mkconfig -o /boot/grub/grub.cfg
+3、  cd /etc/sysconfig/network-scripts/      mv ifcfg-ens33 ifcfg-eth0
+
+4、
+
+TYPE=Ethernet
+BOOTPROTO=static
+IPADDR=192.168.6.200
+NETMASK=255.255.255.0
+GATEWAY=192.168.6.2
+DNS1=114.114.114.114
+NAME=eth0
+UUID=b276c8da-6737-4b0f-a59f-5b3e74bdae97
+DEVICE=eth0
+ONBOOT=yes
+
+
+5、init 6
+
