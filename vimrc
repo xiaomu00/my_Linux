@@ -56,3 +56,6 @@ map S :w<CR>
 map Q :wq<CR>
 map R :source $MYVIMRC<CR>
 map ; :
+
+
+"PS1="\[\e[36m\]xiaomu\[\e[33;1m\] @ \[\e[31m\]\W \[\e[33m\]^o^\[\e[0m\]\[\e[36m\] ~ "
