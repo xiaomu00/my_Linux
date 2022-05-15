@@ -1,0 +1,73 @@
+xiaomu@20:33:19  # 计算器   ar -scr  libtest1.a *.o
+xiaomu@20:33:28  # 计算器   ls
+add.c  add.h  add.o  libtest1.a  main  main.c  main.o  Makefile  Makefile_tmp  mul.c  mul.h  mul.o  parse.c  parse.h  parse.o  sub.c  sub.h  sub.o
+xiaomu@20:33:30  # 计算器   gcc -c main.c -I./ -L./ -l test1
+xiaomu@20:34:36  # 计算器   ls
+add.c  add.h  add.o  libtest1.a  main  main.c  main.o  Makefile  Makefile_tmp  mul.c  mul.h  mul.o  parse.c  parse.h  parse.o  sub.c  sub.h  sub.o
+xiaomu@20:34:38  # 计算器   
+xiaomu@20:36:20  # 计算器   
+xiaomu@20:36:21  # 计算器   
+xiaomu@20:36:21  # 计算器   gcc main.c -I./ -L./ -l test1
+xiaomu@20:36:26  # 计算器   ls
+add.c  add.h  add.o  a.out  libtest1.a  main  main.c  main.o  Makefile  Makefile_tmp  mul.c  mul.h  mul.o  parse.c  parse.h  parse.o  sub.c  sub.h  sub.o
+xiaomu@20:36:27  # 计算器   ./a.out 
+计算器（xiaomu）：add 8 9
+8+9=17
+计算器（xiaomu）：
+段错误(吐核)
+xiaomu@20:36:40  # 计算器   
+xiaomu@20:36:40  # 计算器   
+xiaomu@20:36:40  # 计算器   make clean
+rm -rf *.o
+xiaomu@20:36:51  # 计算器   ls
+add.c  add.h  a.out  libtest1.a  main  main.c  Makefile  Makefile_tmp  mul.c  mul.h  parse.c  parse.h  sub.c  sub.h
+xiaomu@20:36:52  # 计算器   gcc -fpic add.c -o add.o
+/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o：在函数‘_start’中：
+(.text+0x20)：对‘main’未定义的引用
+collect2: 错误：ld 返回 1
+xiaomu@20:37:13  # 计算器   gcc -fpic -c add.c 
+xiaomu@20:38:58  # 计算器   gcc -fpic -c m.c 
+main    main.c  mul.c   mul.h   
+xiaomu@20:38:58  # 计算器   gcc -fpic -c mul.c 
+xiaomu@20:39:08  # 计算器   gcc -fpic -c parse..c 
+gcc: 错误：parse..c：没有那个文件或目录
+gcc: 致命错误：没有输入文件
+编译中断。
+xiaomu@20:39:29  # 计算器   gcc -fpic -c parse.c 
+xiaomu@20:39:36  # 计算器   gcc -fpic -c sub.c 
+xiaomu@20:39:45  # 计算器   ls *.o
+add.o  mul.o  parse.o  sub.o
+xiaomu@20:39:50  # 计算器   gcc -shared *.o -o libtest2.so
+xiaomu@20:40:20  # 计算器   ls
+add.c  add.h  add.o  a.out  libtest1.a  libtest2.so  main  main.c  Makefile  Makefile_tmp  mul.c  mul.h  mul.o  parse.c  parse.h  parse.o  sub.c  sub.h  sub.o
+xiaomu@20:40:21  # 计算器   ll
+总用量 112
+-rw-r--r--. 1 root root    58 5月  14 20:07 add.c
+-rw-r--r--. 1 root root    75 5月  14 18:44 add.h
+-rw-r--r--. 1 root root  1240 5月  14 20:38 add.o
+-rwxr-xr-x. 1 root root  9192 5月  14 20:36 a.out
+-rw-r--r--. 1 root root  9318 5月  14 20:33 libtest1.a
+-rwxr-xr-x. 1 root root 12824 5月  14 20:40 libtest2.so
+-rwxr-xr-x. 1 root root  9192 5月  14 20:31 main
+-rw-r--r--. 1 root root   273 5月  14 18:44 main.c
+-rw-r--r--. 1 root root   364 5月  14 20:04 Makefile
+-rw-r--r--. 1 root root   977 5月  14 19:14 Makefile_tmp
+-rw-r--r--. 1 root root    57 5月  14 20:08 mul.c
+-rw-r--r--. 1 root root    75 5月  14 18:44 mul.h
+-rw-r--r--. 1 root root  1240 5月  14 20:39 mul.o
+-rw-r--r--. 1 root root  1476 5月  14 20:08 parse.c
+-rw-r--r--. 1 root root    83 5月  14 18:44 parse.h
+-rw-r--r--. 1 root root  3520 5月  14 20:39 parse.o
+-rw-r--r--. 1 root root    58 5月  14 20:08 sub.c
+-rw-r--r--. 1 root root    75 5月  14 18:44 sub.h
+-rw-r--r--. 1 root root  1240 5月  14 20:39 sub.o
+xiaomu@20:40:23  # 计算器   gcc main.c -L./ -I./ -l test2
+xiaomu@20:40:54  # 计算器   ls
+add.c  add.h  add.o  a.out  libtest1.a  libtest2.so  main  main.c  Makefile  Makefile_tmp  mul.c  mul.h  mul.o  parse.c  parse.h  parse.o  sub.c  sub.h  sub.o
+xiaomu@20:40:56  # 计算器   ./a.out 
+计算器（xiaomu）：add 8 7
+8+7=15
+计算器（xiaomu）：
+段错误(吐核)
+xiaomu@20:41:03  # 计算器   
+
